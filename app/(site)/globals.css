@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+:root {
+  --main: #dee4eb;
+  --sec: #0b1429;
+}
+
+@theme inline {
+  --color-main: var(--main);
+  --color-sec: var(--sec);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+article h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+article h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+article h3 {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+article h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+article h5 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+article h6 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+article p {
+  color: #d1d5db;
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+article a {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+article code {
+  background-color: #1f2937;
+  color: #f472b6;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+article img {
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  max-width: 100%;
+}
+
+article code {
+  @apply bg-gray-900 text-pink-400 rounded text-sm font-mono;
+}
+
+article pre {
+  @apply bg-main text-sec p-4 rounded-lg overflow-x-auto text-sm font-mono;
+  @apply border border-gray-800 shadow-inner;
+}
+
+article pre code {
+  @apply block w-full;
+}
+
+article pre code::before,
+article pre code::after,
+article code::before,
+article code::after {
+  content: "" !important;
+}
