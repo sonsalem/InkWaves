@@ -3,7 +3,8 @@ export const markdocConfig = fields.markdoc.createMarkdocConfig({});
 
 export default config({
   storage: {
-    kind: "local",
+    kind: "github",
+    repo: "sonsalem/InkWaves",
   },
   ui: {
     brand: {
