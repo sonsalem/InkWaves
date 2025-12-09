@@ -5,7 +5,10 @@ export default config({
   storage: {
     kind: "github",
     repo: "sonsalem/InkWaves",
+    branchPrefix: "main",
+    pathPrefix: "keystatic",
   },
+
   ui: {
     brand: {
       name: "InkWaves",
