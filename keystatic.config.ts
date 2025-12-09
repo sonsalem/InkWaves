@@ -34,7 +34,13 @@ export default config({
         }),
         tags: fields.array(
           fields.object({
-            label: fields.text({ label: "Tags" }),
+            label: fields.text({ label: "Tag Label" }),
+
+            isMain: fields.checkbox({
+              label: "Main Tag",
+              description: "Mark this tag as the primary tag",
+              defaultValue: false,
+            }),
 
             color: fields.select({
               label: "Color",
@@ -56,6 +62,7 @@ export default config({
             itemLabel: (item) => item.fields.label.value || "Unnamed tag",
           }
         ),
+
         content: fields.markdoc({ label: "Content" }),
       },
     }),

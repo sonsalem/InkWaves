@@ -7,6 +7,7 @@ import Pagination from "../Pagination";
 import keystaticConfig from "@/keystatic.config";
 import { Entry } from "@keystatic/core/reader";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 type BlogItem = {
   slug: string;
@@ -21,7 +22,8 @@ type AuthorItem = {
   entry: Entry<(typeof keystaticConfig)["collections"]["authors"]>;
 };
 
-export default function HomePage({
+// Component that uses useSearchParams - must be wrapped in Suspense
+function HomeContent({
   blogs,
   authors,
 }: {
@@ -85,5 +87,26 @@ export default function HomePage({
       })}
       <Pagination totalBlogs={blogs.length} blogPerPage={blogsPerPage} />
     </div>
+  );
+}
+
+// Wrapper component that provides Suspense boundary
+export default function HomePage({
+  blogs,
+  authors,
+}: {
+  blogs: BlogItem[];
+  authors: AuthorItem[];
+}) {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex flex-col py-8 gap-6 px-4 sm:px-8 md:px-20 lg:px-40">
+          Loading...
+        </div>
+      }
+    >
+      <HomeContent blogs={blogs} authors={authors} />
+    </Suspense>
   );
 }
